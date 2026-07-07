@@ -7,7 +7,7 @@ export default function Footer() {
           <div>
             <ul className="space-y-3">
               <li>
-                <span className="text-sm font-semibold text-[#f4f4f4]">Workshop Address</span>
+                <span className="text-sm font-semibold text-[#f4f4f4]">Showroom Studio Address</span>
               </li>
               <li>
                 <a href="https://maps.google.com/?q=Blk+13+York+Hill,+#01-10,+Singapore+162013" target="_blank" rel="noopener noreferrer" className="text-sm text-[#8b8c8b] hover:text-[#f4f4f4] transition-colors">
@@ -52,8 +52,8 @@ export default function Footer() {
             <p className="text-sm text-[#8b8c8b] mb-4">
               Get a front-row seat to custom window treatments, safety solutions, and soft furnishings tailored specifically to your home.
             </p>
-            <a href="https://wa.me/6593449193" target="_blank" rel="noopener noreferrer" className="text-sm text-[#f4f4f4] underline hover:no-underline font-semibold">
-              WhatsApp Alvin Lim: +65 9344 9193
+            <a href="https://wa.me/6591229599" target="_blank" rel="noopener noreferrer" className="text-sm text-[#f4f4f4] underline hover:no-underline font-semibold">
+              WhatsApp Alvin Lim: +65 9122 9599
             </a>
           </div>
         </div>

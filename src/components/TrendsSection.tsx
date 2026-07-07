@@ -10,7 +10,7 @@ export default function TrendsSection() {
             Protect, automate, and beautify your living spaces with our premium home improvement treatments designed for Singapore homes.
           </p>
           <a 
-            href="https://wa.me/6593449193" 
+            href="https://wa.me/6591229599" 
             target="_blank" 
             rel="noopener noreferrer" 
             className="inline-flex items-center gap-2 mt-6 bg-[#25D366] text-white border border-[#25D366] px-6 py-2.5 text-sm hover:bg-[#20ba5a] hover:border-[#20ba5a] transition-all font-medium"
@@ -37,7 +37,7 @@ export default function TrendsSection() {
               Ensure complete peace of mind with our high-tensile Invisible Grills, solar-blocking Solar Films, and durable Magnetic Mosquito or Cat Netting. Clean visibility, zero compromise on safety.
             </p>
             <a 
-              href="https://wa.me/6593449193" 
+              href="https://wa.me/6591229599" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="inline-flex items-center gap-1.5 text-sm text-[#25D366] hover:text-[#20ba5a] font-medium"
@@ -63,7 +63,7 @@ export default function TrendsSection() {
               Experience next-level luxury by integrating Motorised Curtains and Blinds with smart home systems, and monitor your space securely with advanced indoor and outdoor IPcam setups.
             </p>
             <a 
-              href="https://wa.me/6593449193" 
+              href="https://wa.me/6591229599" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="inline-flex items-center gap-1.5 text-sm text-[#25D366] hover:text-[#20ba5a] font-medium"

@@ -6,14 +6,14 @@ const services = [
   {
     title: "Europe Zip Blind System",
     category: "Balcony & Outdoor Protection",
-    image: "/zip_blind.png",
+    image: "/zip_blind.avif",
     description: "The world's premium zip system designed for Singapore balconies and yards. Provides ultimate protection against heavy rains, strong winds, intense solar heat, and pests. Instantly extends your indoor living space outwards.",
     features: ["Heavy rain & wind proof", "Motorised remote controls", "Insect & pest protection", "Europe technology warranty"]
   },
   {
     title: "Bespoke Window Treatments",
     category: "Curtains & Blinds",
-    image: "/custom_main.png",
+    image: "/custom_main.avif",
     description: "Elegant curtains and custom blinds tailored specifically to your windows. Choose from premium Belgium linen, blackout roller blinds, and timber venetian blinds. Integrated with manual or smart motorized tracks.",
     features: ["Belgium import fabrics", "100% Blackout options", "Sleek smart home motorized tracks", "Basswood & timber venetian slates"]
   },
@@ -34,7 +34,7 @@ const services = [
   {
     title: "Custom Upholstery & Cushioning",
     category: "Soft Furnishings",
-    image: "/custom_upholstery.png",
+    image: "/custom_upholstery.avif",
     description: "Refresh or custom-create your indoor and outdoor lounge upholstery. Tailor-made cushion covers, sofa foam replacements, bay window seats, and dining chair cushion repairs with commercial-grade fabrics.",
     features: ["High-resilience premium foam densities", "Outdoor water-repellent fabrics", "Tailored sewing & double piping finish", "Wide array of velvet, linen, and leather options"]
   }
@@ -57,7 +57,7 @@ const processSteps = [
     number: "03",
     title: "Precision Workshop Crafting",
     icon: <Hammer className="w-6 h-6 text-[#d4af37]" />,
-    description: "Your custom treatments are fabricated by our expert carpenters and seamstresses in our local York Hill workshop using strictly certified premium materials."
+    description: "Your custom treatments are fabricated by our production division, ensuring all our products are local fabrication using strictly certified premium materials."
   },
   {
     number: "04",
@@ -163,7 +163,7 @@ export default function ServicesPage() {
                 </div>
 
                 <a 
-                  href="https://wa.me/6593449193"
+                  href="https://wa.me/6591229599"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-[#d4af37] text-[#14100b] font-medium px-6 sm:px-8 py-3 sm:py-3.5 hover:bg-white hover:text-black transition-all text-xs sm:text-sm rounded-none w-full sm:w-auto justify-center"
@@ -244,12 +244,12 @@ export default function ServicesPage() {
             Book a complimentary, no-obligation site measurement and fabric consultation with our expert Alvin Lim today.
           </p>
           <a
-            href="https://wa.me/6593449193"
+            href="https://wa.me/6591229599"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block border border-white text-white hover:bg-white hover:text-black font-semibold text-xs sm:text-sm px-8 sm:px-10 py-3.5 sm:py-4 transition-all w-full sm:w-auto"
           >
-            WhatsApp Alvin Lim: +65 9344 9193
+            WhatsApp Alvin Lim: +65 9122 9599
           </a>
         </div>
       </div>

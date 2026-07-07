@@ -18,7 +18,7 @@ export default function OutdoorSection() {
             </p>
             <div className="flex flex-col gap-4">
               <a 
-                href="https://wa.me/6593449193" 
+                href="https://wa.me/6591229599" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="inline-flex items-center gap-2 text-sm bg-[#25D366] text-white border border-[#25D366] px-6 py-3 w-fit hover:bg-[#20ba5a] hover:border-[#20ba5a] transition-all font-medium"
@@ -37,7 +37,7 @@ export default function OutdoorSection() {
           {/* Image */}
           <div className="order-1 md:order-2">
             <img
-              src="/zip_blind.png"
+              src="/zip_blind.avif"
               alt="Europe Zip Blind System"
               className="w-full h-[500px] object-cover"
             />

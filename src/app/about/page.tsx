@@ -3,8 +3,8 @@
 import { Award, UserCheck, ShieldAlert, Heart, Landmark, Check } from "lucide-react";
 
 const milestones = [
-  { value: "10+", label: "Years of Craftsmanship", desc: "Serving Singapore homeowners with premium custom fittings." },
-  { value: "2,500+", label: "Homes Transformed", desc: "Balconies, BTO flats, condos, and landed properties." },
+  { value: "20+", label: "Years of Craftsmanship", desc: "Serving Singapore homeowners with premium custom fittings." },
+  { value: "10,000+", label: "Homes Transformed", desc: "Balconies, BTO flats, condos, and landed properties." },
   { value: "100%", label: "Bespoke & Tailored", desc: "No pre-made templates. Hand-crafted to your specific space." },
   { value: "Local UEN", label: "Registered Entity", desc: "UEN 53365360J ensuring total legal compliance and trust." }
 ];
@@ -104,23 +104,23 @@ export default function AboutPage() {
               <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#d4af37]/10 flex items-center justify-center mb-4 text-[#d4af37]">
                 <UserCheck size={36} className="sm:size-10" />
               </div>
-              <h3 className="text-lg sm:text-xl font-serif text-white mb-1">Alvin Lim (林祥龙)</h3>
-              <p className="text-[10px] sm:text-xs text-[#d4af37] uppercase tracking-widest font-semibold mb-4">Lead Consultant &amp; On-Site Expert</p>
+              <h3 className="text-lg sm:text-xl font-serif text-white mb-1">Alvin Lim &amp; The group of salesperson</h3>
+              <p className="text-[10px] sm:text-xs text-[#d4af37] uppercase tracking-widest font-semibold mb-4">Lead Consultants &amp; On-Site Experts</p>
               <p className="text-[10px] sm:text-xs text-[#8b8c8b] leading-relaxed">
                 Serving customers with personalized measurements, material suggestions, and direct quotes.
               </p>
             </div>
             
             <div className="lg:col-span-2 space-y-4 text-left">
-              <h4 className="text-base sm:text-lg font-serif text-[#d4af37]">The Alvin Lim Difference</h4>
+              <h4 className="text-base sm:text-lg font-serif text-[#d4af37]">The Alvin &amp; Salesperson Group Difference</h4>
               <p className="text-xs sm:text-sm text-[#8b8c8b] leading-relaxed">
-                Unlike traditional sales-driven operations, our lead expert, Alvin Lim, personally oversees critical consultations. By managing the site measurements and custom material selections himself, Alvin ensures that there is zero translation error between your home plan and the workshop fabrication.
+                Unlike traditional sales-driven operations, our lead expert, Alvin Lim, alongside our group of salespersons, personally oversees critical consultations. By managing the site measurements and custom material selections directly, we ensure that there is zero translation error between your home plan and the workshop fabrication.
               </p>
               <p className="text-xs sm:text-sm text-[#8b8c8b] leading-relaxed">
                 Whether you are evaluating wind resistance coefficients for your high-floor zip blinds or choosing the ideal fabric wear rating for a custom pet-friendly sofa cushion, you will receive expert, honest, and direct advice.
               </p>
               <a 
-                href="https://wa.me/6593449193"
+                href="https://wa.me/6591229599"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block text-xs uppercase tracking-widest text-[#d4af37] border-b border-[#d4af37] pb-1 hover:text-white hover:border-white transition-colors mt-2"
@@ -138,10 +138,10 @@ export default function AboutPage() {
               LOCAL PRODUCTION
             </span>
             <h2 className="text-2xl sm:text-3xl font-serif text-white mb-4 sm:mb-6">
-              Our York Hill Workshop &amp; Studio
+              Our York Hill Showroom Studio
             </h2>
             <p className="text-xs sm:text-sm text-[#8b8c8b] leading-relaxed mb-6">
-              Oscar Furnishing operates its own dedicated workshop right in the heart of York Hill, Singapore. This allows us to maintain strict quality controls, ensure clean custom finishes, and deliver projects inside an optimized timeline.
+              Oscar Furnishing welcomes you to visit our Showroom Studio at York Hill, Singapore. Our production division oversees our manufacturing processes, ensuring all our products are local fabrication of premium quality.
             </p>
             <div className="space-y-3">
               <div className="flex items-start gap-3">
@@ -227,7 +227,7 @@ export default function AboutPage() {
               <span className="text-xs sm:text-sm font-medium text-white">53365360J</span>
             </div>
             <div>
-              <span className="text-[10px] sm:text-xs text-[#8b8c8b] block">Workshop Studio:</span>
+              <span className="text-[10px] sm:text-xs text-[#8b8c8b] block">Showroom Studio:</span>
               <span className="text-xs sm:text-sm font-medium text-white">Blk 13 York Hill, #01-10</span>
             </div>
             <div>

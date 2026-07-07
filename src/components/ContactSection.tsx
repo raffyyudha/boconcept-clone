@@ -13,12 +13,12 @@ export default function ContactSection() {
 
         <div className="grid md:grid-cols-2 gap-8">
           {/* WhatsApp / QR Code */}
-          <a href="https://wa.me/6593449193" target="_blank" rel="noopener noreferrer" className="group relative overflow-hidden flex items-center justify-between p-8 bg-[#14100b] text-[#f4f4f4] h-64 border border-[#3e3d3a]/30 hover:border-[#d4af37] transition-all">
+          <a href="https://wa.me/6591229599" target="_blank" rel="noopener noreferrer" className="group relative overflow-hidden flex items-center justify-between p-8 bg-[#14100b] text-[#f4f4f4] h-64 border border-[#3e3d3a]/30 hover:border-[#d4af37] transition-all">
             <div className="max-w-[60%] flex flex-col justify-between h-full">
               <div>
                 <p className="text-xs uppercase tracking-widest text-[#8b8c8b] mb-2">Instant Consultation</p>
                 <p className="text-xl md:text-2xl font-serif text-[#d4af37]">Scan to chat on WhatsApp</p>
-                <p className="text-xs text-[#8b8c8b] mt-2">Alvin Lim (林祥龙)<br/>+65 9344 9193</p>
+                <p className="text-xs text-[#8b8c8b] mt-2">Alvin Lim (林祥龙)<br/>+65 9122 9599</p>
               </div>
               <p className="text-sm underline hover:no-underline text-white mt-4">Open Chat Directly</p>
             </div>

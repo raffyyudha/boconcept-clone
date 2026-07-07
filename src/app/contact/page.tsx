@@ -62,7 +62,7 @@ export default function ContactPage() {
             
             {/* WhatsApp Card */}
             <a 
-              href="https://wa.me/6593449193"
+              href="https://wa.me/6591229599"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-start gap-4 p-6 bg-[#1e1913] border border-[#3e3d3a]/30 hover:border-[#d4af37] transition-all group"
@@ -72,7 +72,7 @@ export default function ContactPage() {
               </div>
               <div>
                 <span className="text-xs text-[#8b8c8b] uppercase tracking-wider block mb-1">Instant WhatsApp Consultation</span>
-                <span className="text-lg font-serif text-white group-hover:text-[#d4af37] transition-colors">Alvin Lim: +65 9344 9193</span>
+                <span className="text-lg font-serif text-white group-hover:text-[#d4af37] transition-colors">Alvin Lim: +65 9122 9599</span>
                 <span className="text-xs text-[#8b8c8b] block mt-1">Free estimation &amp; laser measurement appointments.</span>
               </div>
             </a>
@@ -103,7 +103,7 @@ export default function ContactPage() {
                 <MapPin size={24} />
               </div>
               <div>
-                <span className="text-xs text-[#8b8c8b] uppercase tracking-wider block mb-1">Showroom &amp; Workshop</span>
+                <span className="text-xs text-[#8b8c8b] uppercase tracking-wider block mb-1">Showroom Studio</span>
                 <span className="text-base font-serif text-white group-hover:text-[#d4af37] transition-colors">Blk 13 York Hill, #01-10</span>
                 <span className="text-xs text-[#8b8c8b] block mt-1">Singapore 162013 (By Appointment Only)</span>
               </div>

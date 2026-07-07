@@ -9,9 +9,9 @@ export default function HistorySection() {
               Oscar Furnishing - Dedicated to Quality Home Improvement
             </h2>
             <p className="text-[#5f605f] mb-6">
-              Registered under Registration Number 53365360J, Oscar Furnishing is your ideal choice for home furnishings. We specialize in high-quality window coverings, safety invisible grills, mosquito netting, vinyl flooring, wallpaper, custom cushions, upholstery, and comprehensive interior design styling.
+              Registered under Registration Number 53365360J, Oscar Furnishing is led by Alvin &amp; The group of salesperson. We specialize in high-quality window coverings, safety invisible grills, mosquito netting, vinyl flooring, wallpaper, custom cushions, upholstery, and soft furnishings. We operate our York Hill studio as a showroom, and all our products are local fabrication.
             </p>
-            <a href="https://wa.me/6593449193" target="_blank" rel="noopener noreferrer" className="inline-block text-sm text-[#14100b] border border-[#14100b] px-8 py-3 hover:bg-[#14100b] hover:text-[#f4f4f4] transition-all mb-8">
+            <a href="https://wa.me/6591229599" target="_blank" rel="noopener noreferrer" className="inline-block text-sm text-[#14100b] border border-[#14100b] px-8 py-3 hover:bg-[#14100b] hover:text-[#f4f4f4] transition-all mb-8">
               Consult Alvin Lim
             </a>
 
