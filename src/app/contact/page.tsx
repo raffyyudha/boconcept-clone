@@ -108,6 +108,23 @@ export default function ContactPage() {
                 <span className="text-xs text-[#8b8c8b] block mt-1">Singapore 162013 (By Appointment Only)</span>
               </div>
             </a>
+
+            {/* Website QR Card */}
+            <a 
+              href="https://oscarfurnishing.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-start gap-4 p-6 bg-[#1e1913] border border-[#3e3d3a]/30 hover:border-[#d4af37] transition-all group"
+            >
+              <div className="w-12 h-12 bg-white p-1 flex items-center justify-center shrink-0 border border-neutral-800">
+                <img src="/website_qr.png" alt="Website QR Code" className="w-full h-full object-contain" />
+              </div>
+              <div>
+                <span className="text-xs text-[#8b8c8b] uppercase tracking-wider block mb-1">Website QR Code</span>
+                <span className="text-base font-serif text-white group-hover:text-[#d4af37] transition-colors">oscarfurnishing.com</span>
+                <span className="text-xs text-[#8b8c8b] block mt-1">Click to visit or scan to open on mobile.</span>
+              </div>
+            </a>
           </div>
 
           {/* Right - Interactive Form (3 cols) */}

@@ -67,15 +67,6 @@ const processSteps = [
   }
 ];
 
-const priceTiers = [
-  { service: "Curtains (Day & Night Set)", range: "From $250 / panel", note: "Includes tracks & premium fabric options" },
-  { service: "Premium Roller Blinds", range: "From $120 / window section", note: "Choose manual or motorized smart tracks" },
-  { service: "Europe Zip Blind System", range: "Direct Consultation Required", note: "Premium weather-proof patio enclosures" },
-  { service: "Invisible Grills (Child Safety)", range: "From $450 onwards", note: "High-tensile 316 structural stainless wire" },
-  { service: "Magnetic Insect Screen / Cat Net", range: "From $90 onwards", note: "Custom dimensions & magnetic self-closes" },
-  { service: "Vinyl Flooring Overlay", range: "From $4.50 / sqft", note: "Heavy commercial wear layer & waterproof" }
-];
-
 export default function ServicesPage() {
   return (
     <main className="min-h-screen bg-[#14100b] text-[#f4f4f4] pt-24 sm:pt-32 pb-16 sm:pb-24">
@@ -198,42 +189,6 @@ export default function ServicesPage() {
                 <p className="text-xs text-[#8b8c8b] leading-relaxed">{step.description}</p>
               </div>
             ))}
-          </div>
-        </div>
-
-        {/* Estimation Guide Table */}
-        <div className="mt-24 sm:mt-36 bg-[#1e1913] border border-[#3e3d3a]/30 p-6 sm:p-10">
-          <div className="text-center max-w-2xl mx-auto mb-10">
-            <h3 className="text-xl sm:text-2xl font-serif text-[#d4af37]">Service Estimation Guide</h3>
-            <p className="text-xs text-[#8b8c8b] mt-2">
-              Transparent standard starting ranges for budget planning.
-            </p>
-          </div>
-
-          <div className="overflow-x-auto w-full">
-            <table className="w-full text-left text-xs sm:text-sm border-collapse min-w-[500px]">
-              <thead>
-                <tr className="border-b border-[#3e3d3a]/40 text-[#8b8c8b]">
-                  <th className="py-4 px-2 uppercase font-medium tracking-wider">Service Type</th>
-                  <th className="py-4 px-2 uppercase font-medium tracking-wider">Starting Range</th>
-                  <th className="py-4 px-2 uppercase font-medium tracking-wider">Includes</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-[#3e3d3a]/20">
-                {priceTiers.map((tier, idx) => (
-                  <tr key={idx} className="hover:bg-[#14100b]/20 transition-colors">
-                    <td className="py-4 px-2 font-medium text-white">{tier.service}</td>
-                    <td className="py-4 px-2 text-[#d4af37] font-semibold">{tier.range}</td>
-                    <td className="py-4 px-2 text-[#8b8c8b]">{tier.note}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <div className="mt-6 text-center">
-            <p className="text-[10px] sm:text-xs text-[#8b8c8b]">
-              *Note: Final prices are subjected to physical site conditions, exact fabric tiers, and scope size.
-            </p>
           </div>
         </div>
 
