@@ -6,6 +6,8 @@ import MainLayoutWrapper from "@/components/MainLayoutWrapper";
 import Script from "next/script";
 import { getSiteSettings } from "@/lib/data";
 
+export const runtime = "edge";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],

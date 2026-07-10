@@ -7,6 +7,9 @@ interface SeoPageProps {
   params: Promise<{ slug: string }>;
 }
 
+export const runtime = "edge";
+
+
 // Next.js static build pre-rendering trigger (pages generated on-demand)
 export async function generateStaticParams() {
   return [];
