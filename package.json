@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev -H 0.0.0.0 --turbopack",
-    "build": "next-on-pages",
+    "build": "next build",
+    "build:cf": "next-on-pages",
     "start": "next start",
     "lint": "bunx tsc --noEmit && next lint",
     "format": "bunx biome format --write"
