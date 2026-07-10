@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { getSupabase } from "@/lib/supabase";
+import Link from "next/link";
 
 export default function AdminDashboard() {
   const [counts, setCounts] = useState<Record<string, number>>({});
@@ -53,7 +54,7 @@ export default function AdminDashboard() {
       {/* Stats Grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
         {cards.map((card) => (
-          <a
+          <Link
             key={card.label}
             href={card.href}
             className="bg-white rounded-2xl border border-gray-100 p-5 hover:shadow-md transition-all group"
@@ -69,7 +70,7 @@ export default function AdminDashboard() {
               )}
             </p>
             <p className="text-xs text-gray-500 mt-1">{card.label}</p>
-          </a>
+          </Link>
         ))}
       </div>
 
@@ -77,48 +78,48 @@ export default function AdminDashboard() {
       <div className="bg-white rounded-2xl border border-gray-100 p-6">
         <h2 className="text-lg font-bold text-gray-900 mb-4">⚡ Quick Actions</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-          <a href="/admin/hero" className="flex items-center gap-3 p-4 rounded-xl border border-gray-100 hover:bg-blue-50 hover:border-blue-200 transition-all">
+          <Link href="/admin/hero" className="flex items-center gap-3 p-4 rounded-xl border border-gray-100 hover:bg-blue-50 hover:border-blue-200 transition-all">
             <span className="text-2xl">🖼️</span>
             <div>
               <p className="font-semibold text-sm text-gray-900">Edit Hero Banner</p>
               <p className="text-xs text-gray-500">Change headline, image</p>
             </div>
-          </a>
-          <a href="/admin/catalogue" className="flex items-center gap-3 p-4 rounded-xl border border-gray-100 hover:bg-purple-50 hover:border-purple-200 transition-all">
+          </Link>
+          <Link href="/admin/catalogue" className="flex items-center gap-3 p-4 rounded-xl border border-gray-100 hover:bg-purple-50 hover:border-purple-200 transition-all">
             <span className="text-2xl">📦</span>
             <div>
               <p className="font-semibold text-sm text-gray-900">Manage Catalogue</p>
               <p className="text-xs text-gray-500">Add/edit products</p>
             </div>
-          </a>
-          <a href="/admin/gallery" className="flex items-center gap-3 p-4 rounded-xl border border-gray-100 hover:bg-green-50 hover:border-green-200 transition-all">
+          </Link>
+          <Link href="/admin/gallery" className="flex items-center gap-3 p-4 rounded-xl border border-gray-100 hover:bg-green-50 hover:border-green-200 transition-all">
             <span className="text-2xl">🎨</span>
             <div>
               <p className="font-semibold text-sm text-gray-900">Upload Gallery Photos</p>
               <p className="text-xs text-gray-500">Add new project images</p>
             </div>
-          </a>
-          <a href="/admin/settings" className="flex items-center gap-3 p-4 rounded-xl border border-gray-100 hover:bg-orange-50 hover:border-orange-200 transition-all">
+          </Link>
+          <Link href="/admin/settings" className="flex items-center gap-3 p-4 rounded-xl border border-gray-100 hover:bg-orange-50 hover:border-orange-200 transition-all">
             <span className="text-2xl">⚙️</span>
             <div>
               <p className="font-semibold text-sm text-gray-900">Site Settings</p>
               <p className="text-xs text-gray-500">Logo, WhatsApp, company info</p>
             </div>
-          </a>
-          <a href="/admin/testimonials" className="flex items-center gap-3 p-4 rounded-xl border border-gray-100 hover:bg-teal-50 hover:border-teal-200 transition-all">
+          </Link>
+          <Link href="/admin/testimonials" className="flex items-center gap-3 p-4 rounded-xl border border-gray-100 hover:bg-teal-50 hover:border-teal-200 transition-all">
             <span className="text-2xl">💬</span>
             <div>
               <p className="font-semibold text-sm text-gray-900">Add Testimonial</p>
               <p className="text-xs text-gray-500">Customer reviews</p>
             </div>
-          </a>
-          <a href="/" target="_blank" className="flex items-center gap-3 p-4 rounded-xl border border-gray-100 hover:bg-yellow-50 hover:border-yellow-200 transition-all">
+          </Link>
+          <Link href="/" target="_blank" className="flex items-center gap-3 p-4 rounded-xl border border-gray-100 hover:bg-yellow-50 hover:border-yellow-200 transition-all">
             <span className="text-2xl">👁️</span>
             <div>
               <p className="font-semibold text-sm text-gray-900">View Live Website</p>
               <p className="text-xs text-gray-500">Open in new tab</p>
             </div>
-          </a>
+          </Link>
         </div>
       </div>
     </div>
