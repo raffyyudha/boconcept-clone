@@ -165,22 +165,22 @@ CREATE TABLE IF NOT EXISTS gallery_images (
 );
 
 INSERT INTO gallery_images (image_url, alt_text, sort_order) VALUES
-  ('/gallery/WhatsApp Image 2026-07-06 at 9.19.06 PM.avif', 'Installation 1', 1),
-  ('/gallery/WhatsApp Image 2026-07-06 at 9.19.07 PM.avif', 'Installation 2', 2),
-  ('/gallery/WhatsApp Image 2026-07-06 at 9.19.19 PM.avif', 'Installation 3', 3),
-  ('/gallery/WhatsApp Image 2026-07-06 at 9.19.20 PM.avif', 'Installation 4', 4),
-  ('/gallery/WhatsApp Image 2026-07-06 at 9.19.20 PM (1).avif', 'Installation 5', 5),
-  ('/gallery/WhatsApp Image 2026-07-06 at 9.19.20 PM (2).avif', 'Installation 6', 6),
-  ('/gallery/WhatsApp Image 2026-07-06 at 9.19.20 PM (3).avif', 'Installation 7', 7),
-  ('/gallery/WhatsApp Image 2026-07-06 at 9.19.21 PM.avif', 'Installation 8', 8),
-  ('/gallery/WhatsApp Image 2026-07-06 at 9.19.21 PM (1).avif', 'Installation 9', 9),
-  ('/gallery/WhatsApp Image 2026-07-06 at 9.19.21 PM (2).avif', 'Installation 10', 10),
-  ('/gallery/WhatsApp Image 2026-07-06 at 9.19.21 PM (3).avif', 'Installation 11', 11),
-  ('/gallery/WhatsApp Image 2026-07-06 at 9.19.22 PM.avif', 'Installation 12', 12),
-  ('/gallery/WhatsApp Image 2026-07-06 at 9.19.22 PM (1).avif', 'Installation 13', 13),
-  ('/gallery/WhatsApp Image 2026-07-06 at 9.19.22 PM (2).avif', 'Installation 14', 14),
-  ('/gallery/WhatsApp Image 2026-07-06 at 9.19.22 PM (3).avif', 'Installation 15', 15),
-  ('/gallery/WhatsApp Image 2026-07-06 at 9.19.23 PM.avif', 'Installation 16', 16);
+  ('/gallery/gallery-1.avif', 'Installation 1', 1),
+  ('/gallery/gallery-2.avif', 'Installation 2', 2),
+  ('/gallery/gallery-3.avif', 'Installation 3', 3),
+  ('/gallery/gallery-4.avif', 'Installation 4', 4),
+  ('/gallery/gallery-5.avif', 'Installation 5', 5),
+  ('/gallery/gallery-6.avif', 'Installation 6', 6),
+  ('/gallery/gallery-7.avif', 'Installation 7', 7),
+  ('/gallery/gallery-8.avif', 'Installation 8', 8),
+  ('/gallery/gallery-9.avif', 'Installation 9', 9),
+  ('/gallery/gallery-10.avif', 'Installation 10', 10),
+  ('/gallery/gallery-11.avif', 'Installation 11', 11),
+  ('/gallery/gallery-12.avif', 'Installation 12', 12),
+  ('/gallery/gallery-13.avif', 'Installation 13', 13),
+  ('/gallery/gallery-14.avif', 'Installation 14', 14),
+  ('/gallery/gallery-15.avif', 'Installation 15', 15),
+  ('/gallery/gallery-16.avif', 'Installation 16', 16);
 
 -- 10. INTERIOR DESIGN SECTION (header text)
 CREATE TABLE IF NOT EXISTS interior_section (
