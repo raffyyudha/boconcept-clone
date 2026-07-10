@@ -1,4 +1,26 @@
-export default function Footer() {
+interface FooterProps {
+  addressLine1?: string;
+  addressLine2?: string;
+  mapsUrl?: string;
+  companyName?: string;
+  regNumber?: string;
+  email?: string;
+  facebookUrl?: string;
+  whatsappNumber?: string;
+  whatsappName?: string;
+}
+
+export default function Footer({
+  addressLine1 = "Blk 13 York Hill, #01-10",
+  addressLine2 = "Singapore 162013",
+  mapsUrl = "https://maps.google.com/?q=Blk+13+York+Hill,+#01-10,+Singapore+162013",
+  companyName = "OSCAR FURNISHING",
+  regNumber = "53365360J",
+  email = "oscarfurnishing9599@gmail.com",
+  facebookUrl = "https://facebook.com/oscar.furnishing",
+  whatsappNumber = "6591229599",
+  whatsappName = "Alvin Lim",
+}: FooterProps) {
   return (
     <footer className="bg-[#14100b] py-16">
       <div className="max-w-7xl mx-auto px-6">
@@ -10,13 +32,13 @@ export default function Footer() {
                 <span className="text-sm font-semibold text-[#f4f4f4]">Showroom Studio Address</span>
               </li>
               <li>
-                <a href="https://maps.google.com/?q=Blk+13+York+Hill,+#01-10,+Singapore+162013" target="_blank" rel="noopener noreferrer" className="text-sm text-[#8b8c8b] hover:text-[#f4f4f4] transition-colors">
-                  Blk 13 York Hill, #01-10
+                <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-[#8b8c8b] hover:text-[#f4f4f4] transition-colors">
+                  {addressLine1}
                 </a>
               </li>
               <li>
-                <a href="https://maps.google.com/?q=Blk+13+York+Hill,+#01-10,+Singapore+162013" target="_blank" rel="noopener noreferrer" className="text-sm text-[#8b8c8b] hover:text-[#f4f4f4] transition-colors">
-                  Singapore 162013
+                <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-[#8b8c8b] hover:text-[#f4f4f4] transition-colors">
+                  {addressLine2}
                 </a>
               </li>
             </ul>
@@ -26,20 +48,20 @@ export default function Footer() {
           <div>
             <ul className="space-y-3">
               <li>
-                <span className="text-sm font-semibold text-[#f4f4f4]">OSCAR FURNISHING</span>
+                <span className="text-sm font-semibold text-[#f4f4f4]">{companyName}</span>
               </li>
               <li>
                 <span className="text-sm text-[#8b8c8b]">
-                  Reg No: 53365360J
+                  Reg No: {regNumber}
                 </span>
               </li>
               <li>
-                <a href="mailto:oscarfurnishing9599@gmail.com" className="text-sm text-[#8b8c8b] hover:text-[#f4f4f4] transition-colors">
+                <a href={`mailto:${email}`} className="text-sm text-[#8b8c8b] hover:text-[#f4f4f4] transition-colors">
                   Email Us
                 </a>
               </li>
               <li>
-                <a href="https://facebook.com/oscar.furnishing" target="_blank" rel="noopener noreferrer" className="text-sm text-[#8b8c8b] hover:text-[#f4f4f4] transition-colors">
+                <a href={facebookUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-[#8b8c8b] hover:text-[#f4f4f4] transition-colors">
                   Facebook Page
                 </a>
               </li>
@@ -52,8 +74,8 @@ export default function Footer() {
             <p className="text-sm text-[#8b8c8b] mb-4">
               Get a front-row seat to custom window treatments, safety solutions, and soft furnishings tailored specifically to your home.
             </p>
-            <a href="https://wa.me/6591229599" target="_blank" rel="noopener noreferrer" className="text-sm text-[#f4f4f4] underline hover:no-underline font-semibold">
-              WhatsApp Alvin Lim: +65 9122 9599
+            <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="text-sm text-[#f4f4f4] underline hover:no-underline font-semibold">
+              WhatsApp {whatsappName}: +65 {whatsappNumber.replace('65', '').replace(/(\d{4})(\d{4})/, '$1 $2')}
             </a>
           </div>
         </div>
@@ -62,7 +84,7 @@ export default function Footer() {
         <div className="pt-8 border-t border-[#3e3d3a]/30">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-xs text-[#8b8c8b]">
-              © 2026 OSCAR FURNISHING. All rights reserved.
+              © {new Date().getFullYear()} {companyName}. All rights reserved.
             </p>
             <div className="flex gap-6">
               <a href="#" className="text-xs text-[#8b8c8b] hover:text-[#f4f4f4] transition-colors">

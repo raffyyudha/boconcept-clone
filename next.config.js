@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export",
   allowedDevOrigins: ["*.preview.same-app.com"],
   images: {
     unoptimized: true,
@@ -9,6 +8,8 @@ const nextConfig = {
       "images.unsplash.com",
       "ext.same-assets.com",
       "ugc.same-assets.com",
+      "mqqbtxdvmsuzfhzxgojb.supabase.co",
+      "cdn.media.amplience.net",
     ],
     remotePatterns: [
       {
@@ -29,6 +30,16 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "ugc.same-assets.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "mqqbtxdvmsuzfhzxgojb.supabase.co",
+        pathname: "/storage/**",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn.media.amplience.net",
         pathname: "/**",
       },
     ],

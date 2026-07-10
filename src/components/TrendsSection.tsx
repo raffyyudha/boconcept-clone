@@ -1,79 +1,85 @@
-export default function TrendsSection() {
+interface TrendsSectionData {
+  title: string;
+  description: string;
+  cta_text: string;
+}
+
+interface TrendsItem {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  cta_text: string;
+}
+
+interface TrendsSectionProps {
+  sectionData?: TrendsSectionData | null;
+  items?: TrendsItem[];
+  whatsappNumber?: string;
+}
+
+export default function TrendsSection({ sectionData, items = [], whatsappNumber = "6591229599" }: TrendsSectionProps) {
+  const sTitle = sectionData?.title || "Modern Home Solutions";
+  const sDesc = sectionData?.description || "Protect, automate, and beautify your living spaces with our premium home improvement treatments designed for Singapore homes.";
+  const sCta = sectionData?.cta_text || "Consult Alvin Lim";
+
+  const defaultItems: TrendsItem[] = [
+    { id: 1, title: "Safety & Environmental Protection", description: "Ensure complete peace of mind with our high-tensile Invisible Grills, solar-blocking Solar Films, and durable Magnetic Mosquito or Cat Netting. Clean visibility, zero compromise on safety.", image: "https://ext.same-assets.com/2889591500/3069089582.jpeg", cta_text: "Enquire about safety netting" },
+    { id: 2, title: "Smart Home & Security", description: "Experience next-level luxury by integrating Motorised Curtains and Blinds with smart home systems, and monitor your space securely with advanced indoor and outdoor IPcam setups.", image: "https://ext.same-assets.com/2889591500/2822851509.jpeg", cta_text: "Explore smart automation options" },
+  ];
+
+  const displayItems = items.length > 0 ? items : defaultItems;
+
   return (
     <section className="bg-[#f4f4f4] py-20">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-serif text-[#14100b] mb-6">
-            Modern Home Solutions
+            {sTitle}
           </h2>
           <p className="text-[#5f605f] max-w-2xl mx-auto">
-            Protect, automate, and beautify your living spaces with our premium home improvement treatments designed for Singapore homes.
+            {sDesc}
           </p>
-          <a 
-            href="https://wa.me/6591229599" 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <a
+            href={`https://wa.me/${whatsappNumber}`}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 mt-6 bg-[#25D366] text-white border border-[#25D366] px-6 py-2.5 text-sm hover:bg-[#20ba5a] hover:border-[#20ba5a] transition-all font-medium"
           >
             <svg className="w-4 h-4 fill-current shrink-0" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
               <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z" />
             </svg>
-            Consult Alvin Lim
+            {sCta}
           </a>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
-          {/* Safety & Environmental Protection */}
-          <div className="group cursor-pointer">
-            <div className="relative overflow-hidden mb-6">
-              <img
-                src="https://ext.same-assets.com/2889591500/3069089582.jpeg"
-                alt="Safety & Environmental Protection"
-                className="w-full h-[400px] object-cover group-hover:scale-105 transition-transform duration-500"
-              />
+          {displayItems.map((item) => (
+            <div key={item.id} className="group cursor-pointer">
+              <div className="relative overflow-hidden mb-6">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-[400px] object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <h3 className="text-xl font-serif text-[#14100b] mb-3">{item.title}</h3>
+              <p className="text-sm text-[#5f605f] mb-4 line-clamp-3">
+                {item.description}
+              </p>
+              <a
+                href={`https://wa.me/${whatsappNumber}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm text-[#25D366] hover:text-[#20ba5a] font-medium"
+              >
+                <svg className="w-4 h-4 fill-current shrink-0" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z" />
+                </svg>
+                {item.cta_text}
+              </a>
             </div>
-            <h3 className="text-xl font-serif text-[#14100b] mb-3">Safety &amp; Environmental Protection</h3>
-            <p className="text-sm text-[#5f605f] mb-4 line-clamp-3">
-              Ensure complete peace of mind with our high-tensile Invisible Grills, solar-blocking Solar Films, and durable Magnetic Mosquito or Cat Netting. Clean visibility, zero compromise on safety.
-            </p>
-            <a 
-              href="https://wa.me/6591229599" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="inline-flex items-center gap-1.5 text-sm text-[#25D366] hover:text-[#20ba5a] font-medium"
-            >
-              <svg className="w-4 h-4 fill-current shrink-0" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
-                <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z" />
-              </svg>
-              Enquire about safety netting
-            </a>
-          </div>
-
-          {/* Smart Home & Security */}
-          <div className="group cursor-pointer">
-            <div className="relative overflow-hidden mb-6">
-              <img
-                src="https://ext.same-assets.com/2889591500/2822851509.jpeg"
-                alt="Smart Home & Security"
-                className="w-full h-[400px] object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-            <h3 className="text-xl font-serif text-[#14100b] mb-3">Smart Home &amp; Security</h3>
-            <p className="text-sm text-[#5f605f] mb-4 line-clamp-3">
-              Experience next-level luxury by integrating Motorised Curtains and Blinds with smart home systems, and monitor your space securely with advanced indoor and outdoor IPcam setups.
-            </p>
-            <a 
-              href="https://wa.me/6591229599" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="inline-flex items-center gap-1.5 text-sm text-[#25D366] hover:text-[#20ba5a] font-medium"
-            >
-              <svg className="w-4 h-4 fill-current shrink-0" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
-                <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z" />
-              </svg>
-              Explore smart automation options
-            </a>
-          </div>
+          ))}
         </div>
       </div>
     </section>
