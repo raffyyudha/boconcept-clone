@@ -10,10 +10,6 @@ interface SeoPageProps {
 export const runtime = "edge";
 
 
-// Next.js static build pre-rendering trigger (pages generated on-demand)
-export async function generateStaticParams() {
-  return [];
-}
 
 // Statically generated meta data
 export async function generateMetadata({ params }: SeoPageProps) {
