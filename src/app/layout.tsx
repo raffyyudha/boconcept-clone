@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ClientBody from "./ClientBody";
 import MainLayoutWrapper from "@/components/MainLayoutWrapper";
-import Script from "next/script";
 import { getSiteSettings } from "@/lib/data";
 
 export const runtime = "edge";
@@ -46,16 +45,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <head>
-        <Script
-          crossOrigin="anonymous"
-          src="//unpkg.com/react-grab/dist/index.global.js"
-        />
-        <Script
-          crossOrigin="anonymous"
-          src="//unpkg.com/same-runtime/dist/index.global.js"
-        />
-      </head>
+      <head />
       <body suppressHydrationWarning className="antialiased">
         <ClientBody>
           <MainLayoutWrapper
