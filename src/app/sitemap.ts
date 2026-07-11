@@ -2,7 +2,6 @@ import { MetadataRoute } from "next";
 import { getAllSeoSlugs } from "@/lib/seo-data";
 
 export const dynamic = "force-dynamic";
-export const runtime = "edge";
 
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

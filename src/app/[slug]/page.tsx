@@ -7,10 +7,6 @@ interface SeoPageProps {
   params: Promise<{ slug: string }>;
 }
 
-export const runtime = "edge";
-
-
-
 // Statically generated meta data
 export async function generateMetadata({ params }: SeoPageProps) {
   const { slug } = await params;
