@@ -5,6 +5,8 @@ import ClientBody from "./ClientBody";
 import MainLayoutWrapper from "@/components/MainLayoutWrapper";
 import { getSiteSettings } from "@/lib/data";
 
+export const runtime = "edge";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
