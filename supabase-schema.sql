@@ -159,28 +159,29 @@ CREATE TABLE IF NOT EXISTS gallery_images (
   id SERIAL PRIMARY KEY,
   image_url TEXT NOT NULL,
   alt_text TEXT DEFAULT '',
+  category TEXT DEFAULT 'General',
   sort_order INT DEFAULT 0,
   created_at TIMESTAMPTZ DEFAULT NOW(),
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
-INSERT INTO gallery_images (image_url, alt_text, sort_order) VALUES
-  ('/gallery/gallery-1.avif', 'Installation 1', 1),
-  ('/gallery/gallery-2.avif', 'Installation 2', 2),
-  ('/gallery/gallery-3.avif', 'Installation 3', 3),
-  ('/gallery/gallery-4.avif', 'Installation 4', 4),
-  ('/gallery/gallery-5.avif', 'Installation 5', 5),
-  ('/gallery/gallery-6.avif', 'Installation 6', 6),
-  ('/gallery/gallery-7.avif', 'Installation 7', 7),
-  ('/gallery/gallery-8.avif', 'Installation 8', 8),
-  ('/gallery/gallery-9.avif', 'Installation 9', 9),
-  ('/gallery/gallery-10.avif', 'Installation 10', 10),
-  ('/gallery/gallery-11.avif', 'Installation 11', 11),
-  ('/gallery/gallery-12.avif', 'Installation 12', 12),
-  ('/gallery/gallery-13.avif', 'Installation 13', 13),
-  ('/gallery/gallery-14.avif', 'Installation 14', 14),
-  ('/gallery/gallery-15.avif', 'Installation 15', 15),
-  ('/gallery/gallery-16.avif', 'Installation 16', 16);
+INSERT INTO gallery_images (image_url, alt_text, category, sort_order) VALUES
+  ('/gallery/gallery-1.avif', 'Installation 1', 'Curtain & Blinds', 1),
+  ('/gallery/gallery-2.avif', 'Installation 2', 'Curtain & Blinds', 2),
+  ('/gallery/gallery-3.avif', 'Installation 3', 'Balcony Zip Blinds', 3),
+  ('/gallery/gallery-4.avif', 'Installation 4', 'Balcony Zip Blinds', 4),
+  ('/gallery/gallery-5.avif', 'Installation 5', 'Balcony Zip Blinds', 5),
+  ('/gallery/gallery-6.avif', 'Installation 6', 'Balcony Zip Blinds', 6),
+  ('/gallery/gallery-7.avif', 'Installation 7', 'Invisible Grills', 7),
+  ('/gallery/gallery-8.avif', 'Installation 8', 'Invisible Grills', 8),
+  ('/gallery/gallery-9.avif', 'Installation 9', 'Mosquito Netting', 9),
+  ('/gallery/gallery-10.avif', 'Installation 10', 'Mosquito Netting', 10),
+  ('/gallery/gallery-11.avif', 'Installation 11', 'Custom Cushions & Upholstery', 11),
+  ('/gallery/gallery-12.avif', 'Installation 12', 'Custom Cushions & Upholstery', 12),
+  ('/gallery/gallery-13.avif', 'Installation 13', 'Solar Film', 13),
+  ('/gallery/gallery-14.avif', 'Installation 14', 'Solar Film', 14),
+  ('/gallery/gallery-15.avif', 'Installation 15', 'Repairs & Servicing', 15),
+  ('/gallery/gallery-16.avif', 'Installation 16', 'Repairs & Servicing', 16);
 
 -- 10. INTERIOR DESIGN SECTION (header text)
 CREATE TABLE IF NOT EXISTS interior_section (
@@ -250,7 +251,8 @@ INSERT INTO services (title, category, image, description, features, sort_order)
   ('Bespoke Window Treatments', 'Curtains & Blinds', '/custom_main.avif', 'Elegant curtains and custom blinds tailored specifically to your windows. Choose from premium Belgium linen, blackout roller blinds, and timber venetian blinds. Integrated with manual or smart motorized tracks.', '["Belgium import fabrics", "100% Blackout options", "Sleek smart home motorized tracks", "Basswood & timber venetian slates"]', 2),
   ('Safety & Insect Netting', 'Home Security & Protection', 'https://ext.same-assets.com/2889591500/3069089582.jpeg', 'High-tensile invisible grills for structural child and pet safety without sacrificing views. Complete with magnetic screen mosquito netting and heavy-duty cat mesh designed to stay sleek and clean.', '["High-tensile 316 stainless steel wire", "Magnetic self-closing insect screens", "Strong scratch-resistant cat netting", "Minimalist structural design"]', 3),
   ('Premium Flooring & WallPanel', 'Interior Surfaces', 'https://ext.same-assets.com/2889591500/2724563737.svg', 'Ultra-durable, water-resistant vinyl flooring and modern fluted wall panels. Give your home a luxury backdrop with low maintenance and heavy-duty wear resistance built to last for decades.', '["Waterproof & termite-free vinyl", "Textured fluted wall panels", "Quick overlays and installation", "Eco-friendly, zero formaldehyde"]', 4),
-  ('Custom Upholstery & Cushioning', 'Soft Furnishings', '/custom_upholstery.avif', 'Refresh or custom-create your indoor and outdoor lounge upholstery. Tailor-made cushion covers, sofa foam replacements, bay window seats, and dining chair cushion repairs with commercial-grade fabrics.', '["High-resilience premium foam densities", "Outdoor water-repellent fabrics", "Tailored sewing & double piping finish", "Wide array of velvet, linen, and leather options"]', 5);
+  ('Custom Upholstery & Cushioning', 'Soft Furnishings', '/custom_upholstery.avif', 'Refresh or custom-create your indoor and outdoor lounge upholstery. Tailor-made cushion covers, sofa foam replacements, bay window seats, and dining chair cushion repairs with commercial-grade fabrics.', '["High-resilience premium foam densities", "Outdoor water-repellent fabrics", "Tailored sewing & double piping finish", "Wide array of velvet, linen, and leather options"]', 5),
+  ('Solar film, curtain, zip & blinds repair and servicing.', 'Repairs & Servicing', 'https://mqqbtxdvmsuzfhzxgojb.supabase.co/storage/v1/object/public/images/catalogue/1783837658363-7373.jpg', 'Professional repair, maintenance, and servicing for solar films, indoor curtains, and outdoor zip blinds. Our experienced team diagnoses track issues, recalibrates motorized systems, and restores solar film protection.', '["Zip blind recalibration & repair", "Curtain track & motorized parts service", "Solar film replacement & installation", "On-site diagnostic & fixing"]', 6);
 
 -- 14. PROCESS STEPS
 CREATE TABLE IF NOT EXISTS process_steps (

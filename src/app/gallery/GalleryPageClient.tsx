@@ -10,6 +10,36 @@ interface GalleryPageClientProps {
 
 export default function GalleryPageClient({ galleryImages, whatsappNumber }: GalleryPageClientProps) {
   const [activeImage, setActiveImage] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
+
+  // Dynamically extract unique categories and sort them in a preferred order
+  const uniqueCategories = Array.from(
+    new Set(galleryImages.map((img: any) => img.category || "General").filter(Boolean))
+  ) as string[];
+
+  const preferredOrder = [
+    "Balcony Zip Blinds",
+    "Curtains & Blinds",
+    "Invisible Grills",
+    "Mosquito Netting",
+    "Custom Cushions & Upholstery",
+    "Solar Film",
+    "Repairs & Servicing",
+  ];
+
+  const sortedCategories = [
+    "All",
+    ...preferredOrder.filter((cat) => uniqueCategories.includes(cat)),
+    ...uniqueCategories.filter((cat) => !preferredOrder.includes(cat) && cat !== "General"),
+  ];
+
+  if (uniqueCategories.includes("General") && !sortedCategories.includes("General")) {
+    sortedCategories.push("General");
+  }
+
+  const filteredImages = selectedCategory === "All"
+    ? galleryImages
+    : galleryImages.filter((img: any) => (img.category || "General") === selectedCategory);
 
   return (
     <main className="min-h-screen bg-[#14100b] text-[#f4f4f4] pt-32 pb-20">
@@ -24,13 +54,33 @@ export default function GalleryPageClient({ galleryImages, whatsappNumber }: Gal
           </p>
         </div>
 
+        {/* Category Tabs */}
+        <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 mb-12 max-w-4xl mx-auto">
+          {sortedCategories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setSelectedCategory(cat)}
+              className={`px-4 sm:px-5 py-2 sm:py-2.5 text-[10px] sm:text-xs uppercase tracking-widest transition-all duration-300 font-semibold border ${
+                selectedCategory === cat
+                  ? "bg-[#d4af37] border-[#d4af37] text-[#14100b] shadow-[0_0_15px_rgba(212,175,55,0.2)]"
+                  : "bg-[#1e1913]/60 border-[#3e3d3a]/40 text-[#8b8c8b] hover:text-white hover:border-[#d4af37]/40 hover:bg-[#1e1913]"
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
         {/* Gallery Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {galleryImages.map((img: any, index: number) => (
+        <div 
+          key={selectedCategory} 
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 animate-in fade-in duration-500"
+        >
+          {filteredImages.map((img: any, index: number) => (
             <div
               key={img.id || index}
               onClick={() => setActiveImage(img.image_url)}
-              className="relative overflow-hidden cursor-pointer group aspect-square bg-[#1e1913] border border-[#3e3d3a]/30 hover:border-[#d4af37]/50 transition-all duration-300"
+              className="relative overflow-hidden cursor-pointer group aspect-square bg-[#1e1913] border border-[#3e3d3a]/30 hover:border-[#d4af37]/50 transition-all duration-300 shadow-sm hover:shadow-[0_8px_30px_rgb(0,0,0,0.5)]"
             >
               <img
                 src={img.image_url}
@@ -38,7 +88,10 @@ export default function GalleryPageClient({ galleryImages, whatsappNumber }: Gal
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center">
+                <span className="text-[9px] sm:text-[10px] text-[#d4af37] font-semibold tracking-widest uppercase mb-2 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                  {img.category || "General"}
+                </span>
                 <div className="bg-[#14100b]/95 border border-[#d4af37] text-[#d4af37] text-[10px] uppercase tracking-widest px-4 py-2 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
                   Zoom Image
                 </div>

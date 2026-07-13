@@ -28,6 +28,7 @@ export default function GalleryEditorPage() {
         await supabase.from("gallery_images").insert({
           image_url: url,
           alt_text: files[i].name.replace(/\.[^/.]+$/, ""),
+          category: "General",
           sort_order: images.length + i + 1,
         });
       }
@@ -48,6 +49,11 @@ export default function GalleryEditorPage() {
   const handleUpdateAlt = async (id: number, alt: string) => {
     const supabase = getSupabase();
     await supabase.from("gallery_images").update({ alt_text: alt }).eq("id", id);
+  };
+
+  const handleUpdateCategory = async (id: number, category: string) => {
+    const supabase = getSupabase();
+    await supabase.from("gallery_images").update({ category }).eq("id", id);
   };
 
   return (
@@ -77,7 +83,7 @@ export default function GalleryEditorPage() {
       {/* Image Grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {images.map((img) => (
-          <div key={img.id} className="bg-white rounded-2xl border border-gray-100 overflow-hidden group hover:shadow-md transition-all">
+          <div key={img.id} className="bg-white rounded-2xl border border-gray-100 overflow-hidden group hover:shadow-md transition-all flex flex-col justify-between">
             <div className="aspect-square relative">
               <img src={img.image_url} alt={img.alt_text} className="w-full h-full object-cover" />
               <button
@@ -87,14 +93,28 @@ export default function GalleryEditorPage() {
                 ✕
               </button>
             </div>
-            <div className="p-3">
-              <input
-                type="text"
-                defaultValue={img.alt_text}
-                onBlur={(e) => handleUpdateAlt(img.id, e.target.value)}
-                placeholder="Alt text..."
-                className="w-full px-2 py-1 border border-gray-100 rounded-lg text-xs text-gray-600 focus:border-blue-400 outline-none"
-              />
+            <div className="p-3 space-y-2">
+              <div>
+                <label className="block text-[9px] text-gray-400 font-semibold uppercase mb-0.5">Alt Text</label>
+                <input
+                  type="text"
+                  defaultValue={img.alt_text}
+                  onBlur={(e) => handleUpdateAlt(img.id, e.target.value)}
+                  placeholder="Alt text..."
+                  className="w-full px-2 py-1 border border-gray-200 rounded-lg text-xs text-gray-700 focus:border-blue-400 outline-none"
+                />
+              </div>
+              <div>
+                <label className="block text-[9px] text-gray-400 font-semibold uppercase mb-0.5">Category</label>
+                <input
+                  type="text"
+                  defaultValue={img.category || "General"}
+                  onBlur={(e) => handleUpdateCategory(img.id, e.target.value)}
+                  placeholder="Category..."
+                  className="w-full px-2 py-1 border border-gray-200 rounded-lg text-xs text-gray-700 focus:border-blue-400 outline-none"
+                  list="category-suggestions"
+                />
+              </div>
             </div>
           </div>
         ))}
@@ -108,6 +128,16 @@ export default function GalleryEditorPage() {
           <span className="text-xs text-gray-400 font-medium">Add Images</span>
         </button>
       </div>
+
+      <datalist id="category-suggestions">
+        <option value="Balcony Zip Blinds" />
+        <option value="Curtains & Blinds" />
+        <option value="Invisible Grills" />
+        <option value="Mosquito Netting" />
+        <option value="Custom Cushions & Upholstery" />
+        <option value="Solar Film" />
+        <option value="Repairs & Servicing" />
+      </datalist>
     </div>
   );
 }
