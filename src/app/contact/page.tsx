@@ -12,7 +12,7 @@ export default async function ContactPage() {
   const addressLine1 = settings.address_line1?.value || "Blk 13 York Hill, #01-10";
   const addressLine2 = settings.address_line2?.value || "Singapore 162013";
   const mapsUrl = settings.google_maps_url?.value || "https://maps.google.com/?q=Blk+13+York+Hill,+#01-10,+Singapore+162013";
-  const websiteQr = settings.website_qr?.image_url || "/website_qr.png";
+  const websiteQr = settings.website_qr?.image_url || "/website_qr.avif";
   const websiteUrl = settings.website_url?.value || "https://oscarfurnishing.com/";
 
   return (

@@ -93,7 +93,7 @@ export default function SettingsPage() {
       {/* QR Code Upload */}
       <div className="bg-white rounded-2xl border border-gray-100 p-6 mb-6">
         <ImageUploader
-          currentUrl={settings.website_qr?.image_url || "/website_qr.png"}
+          currentUrl={settings.website_qr?.image_url || "/website_qr.avif"}
           onUpload={(url) => updateSetting("website_qr", "image_url", url)}
           folder="branding"
           label="📱 Website QR Code"

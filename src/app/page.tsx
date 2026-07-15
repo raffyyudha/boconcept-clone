@@ -57,7 +57,7 @@ export default async function Home() {
   const whatsappNumber = settings.whatsapp_number?.value || "6591229599";
   const email = settings.email?.value || "oscarfurnishing9599@gmail.com";
   const websiteUrl = settings.website_url?.value || "https://oscarfurnishing.com/";
-  const websiteQr = settings.website_qr?.image_url || "/website_qr.png";
+  const websiteQr = settings.website_qr?.image_url || "/website_qr.avif";
   const facebookUrl = settings.facebook_url?.value || "facebook.com/oscar.furnishing";
   const whatsappName = settings.whatsapp_name?.value || "Alvin Lim";
   const mapsUrl = settings.google_maps_url?.value || "https://maps.google.com/?q=Blk+13+York+Hill,+#01-10,+Singapore+162013";

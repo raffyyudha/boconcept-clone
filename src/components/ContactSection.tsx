@@ -12,7 +12,7 @@ export default function ContactSection({
   whatsappName = "Alvin Lim",
   email = "oscarfurnishing9599@gmail.com",
   websiteUrl = "https://oscarfurnishing.com/",
-  websiteQr = "/website_qr.png",
+  websiteQr = "/website_qr.avif",
   facebookUrl = "facebook.com/oscar.furnishing",
 }: ContactSectionProps) {
   return (
