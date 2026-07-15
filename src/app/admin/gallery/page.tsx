@@ -28,6 +28,8 @@ export default function GalleryEditorPage() {
         await supabase.from("gallery_images").insert({
           image_url: url,
           alt_text: files[i].name.replace(/\.[^/.]+$/, ""),
+          subtitle: "",
+          description: "",
           category: "General",
           sort_order: images.length + i + 1,
         });
@@ -49,6 +51,16 @@ export default function GalleryEditorPage() {
   const handleUpdateAlt = async (id: number, alt: string) => {
     const supabase = getSupabase();
     await supabase.from("gallery_images").update({ alt_text: alt }).eq("id", id);
+  };
+
+  const handleUpdateSubtitle = async (id: number, subtitle: string) => {
+    const supabase = getSupabase();
+    await supabase.from("gallery_images").update({ subtitle }).eq("id", id);
+  };
+
+  const handleUpdateDescription = async (id: number, description: string) => {
+    const supabase = getSupabase();
+    await supabase.from("gallery_images").update({ description }).eq("id", id);
   };
 
   const handleUpdateCategory = async (id: number, category: string) => {
@@ -102,6 +114,26 @@ export default function GalleryEditorPage() {
                   onBlur={(e) => handleUpdateAlt(img.id, e.target.value)}
                   placeholder="Alt text..."
                   className="w-full px-2 py-1 border border-gray-200 rounded-lg text-xs text-gray-700 focus:border-blue-400 outline-none"
+                />
+              </div>
+              <div>
+                <label className="block text-[9px] text-gray-400 font-semibold uppercase mb-0.5">Subtitle</label>
+                <input
+                  type="text"
+                  defaultValue={img.subtitle || ""}
+                  onBlur={(e) => handleUpdateSubtitle(img.id, e.target.value)}
+                  placeholder="Subtitle..."
+                  className="w-full px-2 py-1 border border-gray-200 rounded-lg text-xs text-gray-700 focus:border-blue-400 outline-none"
+                />
+              </div>
+              <div>
+                <label className="block text-[9px] text-gray-400 font-semibold uppercase mb-0.5">Description</label>
+                <textarea
+                  defaultValue={img.description || ""}
+                  onBlur={(e) => handleUpdateDescription(img.id, e.target.value)}
+                  placeholder="Description..."
+                  rows={2}
+                  className="w-full px-2 py-1 border border-gray-200 rounded-lg text-xs text-gray-700 focus:border-blue-400 outline-none resize-none font-sans"
                 />
               </div>
               <div>
