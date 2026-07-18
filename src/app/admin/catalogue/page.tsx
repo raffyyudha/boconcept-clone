@@ -18,6 +18,48 @@ export default function CatalogueEditorPage() {
 
   useEffect(() => { fetchProducts(); }, []);
 
+  const handleFixImagePaths = async () => {
+    if (!confirm("This will migrate all catalogue product image URLs in the database to remove spaces so they load correctly on Cloudflare/CDN. Proceed?")) return;
+    
+    const fixes = [
+      { old: '/catalogue/2, 3 & 4 inches gap Invisible grill.avif', new: '/catalogue/2-3-4-inches-gap-invisible-grill.avif' },
+      { old: '/catalogue/Combi or Zebra Korean blind.avif', new: '/catalogue/combi-or-zebra-korean-blind.avif' },
+      { old: '/catalogue/Commerical Roller blinds.avif', new: '/catalogue/commercial-roller-blinds.avif' },
+      { old: '/catalogue/Day & Night blackout Honeycomb slidling blind.avif', new: '/catalogue/day-night-blackout-honeycomb-sliding-blind.avif' },
+      { old: '/catalogue/Day & Night curtain..avif', new: '/catalogue/day-night-curtain.avif' },
+      { old: '/catalogue/Monocord  One cord 50mm Venetian blinds.avif', new: '/catalogue/monocord-one-cord-50mm-venetian-blinds.avif' },
+      { old: '/catalogue/Mosquito cat mesh netting.avif', new: '/catalogue/mosquito-cat-mesh-netting.avif' },
+      { old: '/catalogue/Motorised Manual Zip blinds..avif', new: '/catalogue/motorised-manual-zip-blinds.avif' },
+      { old: '/catalogue/Motorized laundry system.avif', new: '/catalogue/motorized-laundry-system.avif' },
+      { old: '/catalogue/Night Curtain.avif', new: '/catalogue/night-curtain.avif' },
+      { old: '/catalogue/Roof with zip blind.avif', new: '/catalogue/roof-with-zip-blind.avif' },
+      { old: '/catalogue/Single layer night curtain.avif', new: '/catalogue/single-layer-night-curtain.avif' },
+      { old: '/catalogue/Slidling Honeycomb blinds.avif', new: '/catalogue/sliding-honeycomb-blinds.avif' },
+      { old: '/catalogue/Uni slat Smart curtain blind.avif', new: '/catalogue/uni-slat-smart-curtain-blind.avif' },
+      { old: '/catalogue/light & Heavy Water depensar.avif', new: '/catalogue/light-heavy-water-dispenser.avif' }
+    ];
+
+    const supabase = getSupabase();
+    let updatedCount = 0;
+
+    for (const fix of fixes) {
+      const { data, error } = await supabase
+        .from("catalogue_products")
+        .update({ image: fix.new })
+        .eq("image", fix.old)
+        .select();
+
+      if (error) {
+        console.error(`Failed to update ${fix.old}:`, error.message);
+      } else if (data && data.length > 0) {
+        updatedCount += data.length;
+      }
+    }
+
+    alert(`Successfully fixed ${updatedCount} image paths in database!`);
+    fetchProducts();
+  };
+
   const handleSave = async (product: any) => {
     setSaving(true);
     const supabase = getSupabase();
@@ -60,14 +102,22 @@ export default function CatalogueEditorPage() {
 
   return (
     <div className="max-w-4xl">
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">📦 Catalogue Products</h1>
           <p className="text-gray-500 text-sm mt-1">Manage your product catalogue ({products.length} items)</p>
         </div>
-        <button onClick={newProduct} className="px-5 py-2.5 bg-blue-600 text-white rounded-xl font-medium text-sm hover:bg-blue-700 transition-colors">
-          ➕ Add Product
-        </button>
+        <div className="flex flex-wrap gap-2">
+          <button
+            onClick={handleFixImagePaths}
+            className="px-4 py-2.5 bg-amber-600 text-white rounded-xl font-medium text-sm hover:bg-amber-700 transition-colors flex items-center gap-2"
+          >
+            ⚡ Fix Spaces in Image Paths
+          </button>
+          <button onClick={newProduct} className="px-5 py-2.5 bg-blue-600 text-white rounded-xl font-medium text-sm hover:bg-blue-700 transition-colors">
+            ➕ Add Product
+          </button>
+        </div>
       </div>
 
       {/* Product Grid */}
