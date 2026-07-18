@@ -22,14 +22,86 @@ export function getSupabase(): any {
   return browserClient!;
 }
 
+// Helper: Compress and convert image to WebP client-side
+async function compressToWebP(file: File): Promise<File> {
+  if (typeof window === "undefined") return file;
+  if (file.type === "image/svg+xml" || file.type === "image/webp") {
+    return file;
+  }
+
+  return new Promise((resolve) => {
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+        if (!ctx) {
+          resolve(file);
+          return;
+        }
+
+        const MAX_WIDTH = 1920;
+        const MAX_HEIGHT = 1080;
+        let width = img.width;
+        let height = img.height;
+
+        if (width > MAX_WIDTH) {
+          height = Math.round((height * MAX_WIDTH) / width);
+          width = MAX_WIDTH;
+        }
+        if (height > MAX_HEIGHT) {
+          width = Math.round((width * MAX_HEIGHT) / height);
+          height = MAX_HEIGHT;
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+        ctx.drawImage(img, 0, 0, width, height);
+
+        canvas.toBlob(
+          (blob) => {
+            if (!blob) {
+              resolve(file);
+              return;
+            }
+            const webpFile = new File(
+              [blob],
+              file.name.replace(/\.[^/.]+$/, "") + ".webp",
+              { type: "image/webp" }
+            );
+            resolve(webpFile);
+          },
+          "image/webp",
+          0.82 // 82% quality balance
+        );
+      };
+      img.onerror = () => resolve(file);
+      img.src = event.target?.result as string;
+    };
+    reader.onerror = () => resolve(file);
+    reader.readAsDataURL(file);
+  });
+}
+
 // Helper: Upload image to Supabase Storage
 export async function uploadImage(file: File, path: string): Promise<string | null> {
   const supabase = getSupabase();
-  const fileName = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`;
+
+  let fileToUpload = file;
+  if (file.type.startsWith("image/") && file.type !== "image/svg+xml") {
+    try {
+      fileToUpload = await compressToWebP(file);
+    } catch (err) {
+      console.error("WebP compression failed, uploading original:", err);
+    }
+  }
+
+  const fileName = `${Date.now()}-${fileToUpload.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`;
   const filePath = `${path}/${fileName}`;
 
-  const { error } = await supabase.storage.from("images").upload(filePath, file, {
-    cacheControl: "3600",
+  const { error } = await supabase.storage.from("images").upload(filePath, fileToUpload, {
+    cacheControl: "31536000",
     upsert: false,
   });
 
