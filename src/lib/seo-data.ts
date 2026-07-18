@@ -29,18 +29,18 @@ export const locations = [
 // 14 Layanan Inti
 export const services = [
   { name: 'Europe Zip Blinds', key: 'Best Europe Zip Blinds', image: '/zip_blind.avif' },
-  { name: 'Motorised Curtains', key: 'Premium Motorised Curtains', image: '/catalogue/Day & Night curtain..avif' },
-  { name: 'Invisible Safety Grill', key: 'Grade 316 Invisible Safety Grills', image: '/catalogue/2, 3 & 4 inches gap Invisible grill.avif' },
-  { name: 'Cat Mesh Netting', key: 'Durable Mosquito & Cat Mesh Netting', image: '/catalogue/Mosquito cat mesh netting.avif' },
+  { name: 'Motorised Curtains', key: 'Premium Motorised Curtains', image: '/catalogue/day-night-curtain.avif' },
+  { name: 'Invisible Safety Grill', key: 'Grade 316 Invisible Safety Grills', image: '/catalogue/2-3-4-inches-gap-invisible-grill.avif' },
+  { name: 'Cat Mesh Netting', key: 'Durable Mosquito & Cat Mesh Netting', image: '/catalogue/mosquito-cat-mesh-netting.avif' },
   { name: 'Vinyl Flooring', key: 'Waterproof Vinyl Flooring Overlay', image: 'https://ext.same-assets.com/2889591500/2724563737.svg' },
-  { name: 'Window Blinds', key: 'Combi & Zebra Korean Blinds', image: '/catalogue/Combi or Zebra Korean blind.avif' },
-  { name: 'Venetian Blinds', key: 'Monocord Timber Venetian Blinds', image: '/catalogue/Monocord  One cord 50mm Venetian blinds.avif' },
-  { name: 'Roller Blinds', key: 'Commercial Office Roller Blinds', image: '/catalogue/Commerical Roller blinds.avif' },
-  { name: 'Honeycomb Blinds', key: 'Sliding Honeycomb Thermal Blinds', image: '/catalogue/Slidling Honeycomb blinds.avif' },
-  { name: 'Safety Grills', key: 'Balcony Child Safety Invisible Grills', image: '/catalogue/2, 3 & 4 inches gap Invisible grill.avif' },
-  { name: 'Insects Screen', key: 'Magnetic Pest & Mosquito Screen Netting', image: '/catalogue/Mosquito cat mesh netting.avif' },
-  { name: 'Laundry Rack', key: 'Motorised Smart Laundry System', image: '/catalogue/Motorized laundry system.avif' },
-  { name: 'Water Dispenser', key: 'Instant Hot & Cold Water Filtration', image: '/catalogue/light & Heavy Water depensar.avif' },
+  { name: 'Window Blinds', key: 'Combi & Zebra Korean Blinds', image: '/catalogue/combi-or-zebra-korean-blind.avif' },
+  { name: 'Venetian Blinds', key: 'Monocord Timber Venetian Blinds', image: '/catalogue/monocord-one-cord-50mm-venetian-blinds.avif' },
+  { name: 'Roller Blinds', key: 'Commercial Office Roller Blinds', image: '/catalogue/commercial-roller-blinds.avif' },
+  { name: 'Honeycomb Blinds', key: 'Sliding Honeycomb Thermal Blinds', image: '/catalogue/sliding-honeycomb-blinds.avif' },
+  { name: 'Safety Grills', key: 'Balcony Child Safety Invisible Grills', image: '/catalogue/2-3-4-inches-gap-invisible-grill.avif' },
+  { name: 'Insects Screen', key: 'Magnetic Pest & Mosquito Screen Netting', image: '/catalogue/mosquito-cat-mesh-netting.avif' },
+  { name: 'Laundry Rack', key: 'Motorised Smart Laundry System', image: '/catalogue/motorized-laundry-system.avif' },
+  { name: 'Water Dispenser', key: 'Instant Hot & Cold Water Filtration', image: '/catalogue/light-heavy-water-dispenser.avif' },
   { name: 'Custom Cushions', key: 'Bespoke Sofa Cushions Upholstery', image: '/custom_upholstery.avif' }
 ];
 
