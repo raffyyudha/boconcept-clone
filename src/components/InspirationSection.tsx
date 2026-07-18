@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { X } from "lucide-react";
+import Link from "next/link";
 
 interface InspirationSectionData {
   subtitle: string;
@@ -14,6 +15,7 @@ interface GalleryImage {
   alt_text: string;
   subtitle?: string;
   description?: string;
+  category?: string;
 }
 
 interface InspirationSectionProps {
@@ -23,6 +25,7 @@ interface InspirationSectionProps {
 
 export default function InspirationSection({ sectionData, images = [] }: InspirationSectionProps) {
   const [activeImage, setActiveImage] = useState<any | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
   const subtitle = sectionData?.subtitle || "OUR COMPLETED PROJECTS";
   const title = sectionData?.title || "Inspiration Gallery";
@@ -46,24 +49,62 @@ export default function InspirationSection({ sectionData, images = [] }: Inspira
     "/gallery/WhatsApp Image 2026-07-06 at 9.19.23 PM.avif"
   ];
 
-  const displayImages = images.length > 0
-    ? images.map(img => ({
+  const preferredOrder = [
+    "Zip blind",
+    "Night curtain",
+    "Day curtain",
+    "Day & night curtain",
+    "Roller blind",
+    "Roman blind",
+    "Combi blind",
+    "Timber blind",
+    "Uni slat blind",
+    "Invisible grill",
+    "Wall covering",
+    "Vinyl flooring",
+  ];
+
+  const uniqueCategories = Array.from(
+    new Set(images.map((img: any) => img.category || "General").filter(Boolean))
+  ) as string[];
+
+  const sortedCategories = [
+    "All",
+    ...preferredOrder.filter((cat) => uniqueCategories.includes(cat)),
+    ...uniqueCategories.filter((cat) => !preferredOrder.includes(cat) && cat !== "General"),
+  ];
+
+  if (uniqueCategories.includes("General") && !sortedCategories.includes("General")) {
+    sortedCategories.push("General");
+  }
+
+  const filteredImages = selectedCategory === "All"
+    ? images
+    : images.filter((img: any) => (img.category || "General") === selectedCategory);
+
+  const displayLimit = selectedCategory === "All" ? 12 : 24;
+  const limitedImages = filteredImages.slice(0, displayLimit);
+
+  const displayImages = limitedImages.length > 0
+    ? limitedImages.map(img => ({
         src: img.image_url,
         alt: img.alt_text || `Gallery ${img.id}`,
         subtitle: img.subtitle,
-        description: img.description
+        description: img.description,
+        category: img.category || "General"
       }))
     : defaultImages.map((src, i) => ({
         src,
         alt: `Gallery installation ${i + 1}`,
         subtitle: "",
-        description: ""
+        description: "",
+        category: "General"
       }));
 
   return (
     <section className="bg-[#f4f4f4] py-20 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
+        <div className="text-center mb-8">
           <span className="text-[10px] sm:text-xs uppercase tracking-widest text-[#d4af37] font-semibold block mb-2">
             {subtitle}
           </span>
@@ -73,8 +114,28 @@ export default function InspirationSection({ sectionData, images = [] }: Inspira
           <div className="w-16 h-[1px] bg-[#d4af37] mx-auto mt-2"></div>
         </div>
 
+        {/* Category Tabs */}
+        <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 mb-12 max-w-4xl mx-auto">
+          {sortedCategories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setSelectedCategory(cat)}
+              className={`px-4 sm:px-5 py-2 sm:py-2.5 text-[10px] sm:text-xs uppercase tracking-widest transition-all duration-300 font-semibold border ${
+                selectedCategory === cat
+                  ? "bg-[#d4af37] border-[#d4af37] text-[#14100b] shadow-[0_4px_12px_rgba(212,175,55,0.15)]"
+                  : "bg-white border-neutral-200 text-neutral-500 hover:text-neutral-900 hover:border-[#d4af37]/50 hover:bg-neutral-50"
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
         {/* Gallery Image Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div 
+          key={selectedCategory} 
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 animate-in fade-in duration-500"
+        >
           {displayImages.map((img, index) => (
             <div
               key={index}
@@ -88,8 +149,11 @@ export default function InspirationSection({ sectionData, images = [] }: Inspira
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <div className="bg-[#14100b]/80 border border-[#d4af37] text-[#d4af37] text-[10px] uppercase tracking-widest px-4 py-2 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                <div className="absolute inset-0 bg-black/45 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center">
+                  <span className="text-[9px] sm:text-[10px] text-[#d4af37] font-semibold tracking-widest uppercase mb-2 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                    {img.category}
+                  </span>
+                  <div className="bg-[#14100b]/90 border border-[#d4af37] text-[#d4af37] text-[10px] uppercase tracking-widest px-4 py-2 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
                     Zoom Image
                   </div>
                 </div>
@@ -115,6 +179,16 @@ export default function InspirationSection({ sectionData, images = [] }: Inspira
               </div>
             </div>
           ))}
+        </div>
+
+        {/* View All CTA */}
+        <div className="text-center mt-12">
+          <Link
+            href="/gallery"
+            className="inline-flex items-center gap-2 border border-[#d4af37] text-[#14100b] hover:bg-[#d4af37] hover:text-[#14100b] px-8 py-4 text-xs font-semibold uppercase tracking-widest transition-all duration-300 shadow-sm font-sans"
+          >
+            Explore Full Gallery
+          </Link>
         </div>
       </div>
 

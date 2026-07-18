@@ -3,9 +3,26 @@
 import { useEffect, useState, useRef } from "react";
 import { getSupabase, uploadImage } from "@/lib/supabase";
 
+const CATEGORIES = [
+  "General",
+  "Zip blind",
+  "Night curtain",
+  "Day curtain",
+  "Day & night curtain",
+  "Roller blind",
+  "Roman blind",
+  "Combi blind",
+  "Timber blind",
+  "Uni slat blind",
+  "Invisible grill",
+  "Wall covering",
+  "Vinyl flooring",
+];
+
 export default function GalleryEditorPage() {
   const [images, setImages] = useState<any[]>([]);
   const [uploading, setUploading] = useState(false);
+  const [uploadCategory, setUploadCategory] = useState("General");
   const fileRef = useRef<HTMLInputElement>(null);
 
   const fetchImages = async () => {
@@ -30,7 +47,7 @@ export default function GalleryEditorPage() {
           alt_text: files[i].name.replace(/\.[^/.]+$/, ""),
           subtitle: "",
           description: "",
-          category: "General",
+          category: uploadCategory,
           sort_order: images.length + i + 1,
         });
       }
@@ -70,26 +87,40 @@ export default function GalleryEditorPage() {
 
   return (
     <div className="max-w-5xl">
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">🎨 Gallery Manager</h1>
           <p className="text-gray-500 text-sm mt-1">{images.length} images in gallery</p>
         </div>
-        <button
-          onClick={() => fileRef.current?.click()}
-          disabled={uploading}
-          className="px-5 py-2.5 bg-blue-600 text-white rounded-xl font-medium text-sm hover:bg-blue-700 transition-colors disabled:opacity-50 flex items-center gap-2"
-        >
-          {uploading ? (
-            <>
-              <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>
-              Uploading...
-            </>
-          ) : (
-            <>📤 Upload Images</>
-          )}
-        </button>
-        <input ref={fileRef} type="file" accept="image/*" multiple onChange={handleUpload} className="hidden" />
+        <div className="flex flex-wrap items-end gap-3">
+          <div className="flex flex-col">
+            <label className="block text-[10px] text-gray-500 font-semibold uppercase mb-1">Upload Category</label>
+            <select
+              value={uploadCategory}
+              onChange={(e) => setUploadCategory(e.target.value)}
+              className="px-3 py-2 bg-white border border-gray-200 rounded-xl text-xs text-gray-700 outline-none focus:border-blue-400 font-sans"
+            >
+              {CATEGORIES.map(cat => (
+                <option key={cat} value={cat}>{cat}</option>
+              ))}
+            </select>
+          </div>
+          <button
+            onClick={() => fileRef.current?.click()}
+            disabled={uploading}
+            className="px-5 py-2 bg-blue-600 text-white rounded-xl font-medium text-sm hover:bg-blue-700 transition-colors disabled:opacity-50 flex items-center gap-2"
+          >
+            {uploading ? (
+              <>
+                <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>
+                Uploading...
+              </>
+            ) : (
+              <>📤 Upload to "{uploadCategory}"</>
+            )}
+          </button>
+          <input ref={fileRef} type="file" accept="image/*" multiple onChange={handleUpload} className="hidden" />
+        </div>
       </div>
 
       {/* Image Grid */}
@@ -138,14 +169,24 @@ export default function GalleryEditorPage() {
               </div>
               <div>
                 <label className="block text-[9px] text-gray-400 font-semibold uppercase mb-0.5">Category</label>
-                <input
-                  type="text"
-                  defaultValue={img.category || "General"}
-                  onBlur={(e) => handleUpdateCategory(img.id, e.target.value)}
-                  placeholder="Category..."
-                  className="w-full px-2 py-1 border border-gray-200 rounded-lg text-xs text-gray-700 focus:border-blue-400 outline-none"
-                  list="category-suggestions"
-                />
+                <select
+                  value={img.category || "General"}
+                  onChange={(e) => {
+                    const newCat = e.target.value;
+                    setImages(prev => prev.map(item => item.id === img.id ? { ...item, category: newCat } : item));
+                    handleUpdateCategory(img.id, newCat);
+                  }}
+                  className="w-full px-2 py-1 border border-gray-200 rounded-lg text-xs text-gray-700 bg-white focus:border-blue-400 outline-none cursor-pointer"
+                >
+                  {img.category && !CATEGORIES.includes(img.category) && (
+                    <option value={img.category}>{img.category}</option>
+                  )}
+                  {CATEGORIES.map((cat) => (
+                    <option key={cat} value={cat}>
+                      {cat}
+                    </option>
+                  ))}
+                </select>
               </div>
             </div>
           </div>
@@ -160,16 +201,6 @@ export default function GalleryEditorPage() {
           <span className="text-xs text-gray-400 font-medium">Add Images</span>
         </button>
       </div>
-
-      <datalist id="category-suggestions">
-        <option value="Balcony Zip Blinds" />
-        <option value="Curtains & Blinds" />
-        <option value="Invisible Grills" />
-        <option value="Mosquito Netting" />
-        <option value="Custom Cushions & Upholstery" />
-        <option value="Solar Film" />
-        <option value="Repairs & Servicing" />
-      </datalist>
     </div>
   );
 }

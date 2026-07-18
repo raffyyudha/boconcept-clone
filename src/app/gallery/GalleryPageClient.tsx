@@ -18,13 +18,18 @@ export default function GalleryPageClient({ galleryImages, whatsappNumber }: Gal
   ) as string[];
 
   const preferredOrder = [
-    "Balcony Zip Blinds",
-    "Curtains & Blinds",
-    "Invisible Grills",
-    "Mosquito Netting",
-    "Custom Cushions & Upholstery",
-    "Solar Film",
-    "Repairs & Servicing",
+    "Zip blind",
+    "Night curtain",
+    "Day curtain",
+    "Day & night curtain",
+    "Roller blind",
+    "Roman blind",
+    "Combi blind",
+    "Timber blind",
+    "Uni slat blind",
+    "Invisible grill",
+    "Wall covering",
+    "Vinyl flooring",
   ];
 
   const sortedCategories = [
